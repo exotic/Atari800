@@ -1,0 +1,10 @@
+--- src/Makefile.in	2003-01-27 15:13:01.000000000 +0100
++++ src/Makefile.in	2003-02-26 13:48:55.000000000 +0100
+@@ -93,6 +93,6 @@
+ doc: readme.html
+ 
+ readme.html: $(TARGET)
+-	./$(TARGET) -help </dev/null | ../util/usage2html.pl \
++	./$(TARGET) -config ../atari800.cfg -help </dev/null | ../util/usage2html.pl \
+ 		../DOC/readme.html.in ../DOC/USAGE ./atari.h > $@
+ 

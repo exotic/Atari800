@@ -1,0 +1,18 @@
+--- util/usage2html.pl
++++ util/usage2html.pl
+@@ -1,4 +1,4 @@
+-#!/bin/perl
++#!/usr/bin/perl
+ #
+ # Inserts version number and command line options into readme.html
+ #
+@@ -92,6 +92,9 @@
+   } elsif (/^\s*(\S+.*\S+)\t+(\S+.*\S+)\s*$/) {
+     $opt = $1;
+     $dscr = $2;
++  } elsif (/^\s*(\S+.*\S+>)\s{1,}(\S+.*\S+)\s*$/) {
++    $opt = $1;
++    $dscr = $2;
+   } else {die "can't parse \'$_\'"}
+   
+   $opt =~ s/</&lt/g;

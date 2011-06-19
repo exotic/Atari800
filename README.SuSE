@@ -1,0 +1,4 @@
+We can't distribute the ROM images which are needed for this emulator for 
+license purposes. You can download it from net by command 'ei -i atari800', or
+see the file /usr/share/doc/packages/atari800/INSTALL for how to get these 
+images and place it into the directory /usr/share/atari800.

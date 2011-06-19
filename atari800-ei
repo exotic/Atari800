@@ -1,0 +1,47 @@
+#
+# Copyright (c) 1996-2000 SuSE. GmbH Fuerth, Germany.  All rights reserved.
+#
+#                     Subscript for Atari 800-Installation
+#                             (Atari 800)
+#
+# Author: Richard Jelinek <rj@suse.de> 1997
+#
+
+FILE=xf25.zip
+
+if [ ! -d /usr/share/atari800 ]; then
+   echo $ERR "atari800" $ERR_NIN
+   exit 1
+fi
+
+echo $MSG_ROM"Atari800"
+
+if [ "$EI_INET" -eq 1 ]; then
+
+   fetch_data http://www.umich.edu/~archive/atari/8bit/Emulators/Computer/ /tmp/ $FILE 
+
+elif [ ! -z "$EI_DISK" ]; then
+
+   echo $MSG_DS1 $FILE $MSG_DS3 $EI_DISK $MSG_DS2
+   read
+   if ! mcopy $EI_DISK\$FILE /tmp >/dev/null 2>/dev/null; then
+      echo $ERR$EI_DISK\\$FILE $MSG_NF 1>&2
+      exit 1
+   fi
+else
+   img_copy $FILE /tmp
+fi
+
+cd /tmp
+unzip -q -d atari $FILE
+cd atari
+for i in `ls *.ROM`
+do
+   DEST=`echo $i | tr [:upper:] [:lower:]`
+   cp $i /usr/share/atari800/$DEST
+done
+rm -rf /tmp/$FILE /tmp/atari
+
+echo $MSG_DNE
+
+

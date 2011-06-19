@@ -1,0 +1,10 @@
+--- src/sndsave.h	2000-11-14 14:13:33.000000000 +0100
++++ src/sndsave.h	2005-10-13 21:19:46.000000000 +0200
+@@ -4,7 +4,6 @@
+ #include "atari.h"
+ #include <stdio.h>
+ 
+-extern FILE		*sndoutput;
+ extern int		iSoundRate;
+ 
+ typedef int BOOL;
